@@ -1,0 +1,25 @@
+NAME
+    Mozilla::CA - Mozilla's CA cert bundle in PEM format
+
+SYNOPSIS
+        use Mozilla::CA;
+        use IO::Socket::SSL;
+
+        my $client = IO::Socket::SSL->new(
+            PeerHost => "www.example.com:https",
+            SSL_ca_file => Mozilla::CA::SSL_ca_file(),
+        );
+
+DESCRIPTION
+    Mozilla::CA provides a copy of Mozilla's bundle of Certificate Authority
+    certificates in a form that can be consumed by modules and libraries
+    based on OpenSSL.
+
+    The module provide a single function:
+
+    SSL_ca_file()
+        Returns the absolute path to the Mozilla's CA cert bundle PEM file.
+
+SEE ALSO
+    http://curl.haxx.se/docs/caextract.html
+
