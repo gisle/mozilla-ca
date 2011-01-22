@@ -25,13 +25,19 @@ Mozilla::CA - Mozilla's CA cert bundle in PEM format
 
 =head1 SYNOPSIS
 
-    use Mozilla::CA;
     use IO::Socket::SSL;
+    use Mozilla::CA;
 
+    my $host = "www.paypal.com";
     my $client = IO::Socket::SSL->new(
-        PeerHost => "www.example.com:https",
+	PeerHost => "$host:443",
+	SSL_verify_mode => 0x02,
 	SSL_ca_file => Mozilla::CA::SSL_ca_file(),
-    );
+    )
+	|| die "Can't connect: $@";
+
+    $client->verify_hostname($host, "http")
+	|| die "hostname verification failure";
 
 =head1 DESCRIPTION
 
