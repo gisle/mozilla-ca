@@ -6,7 +6,7 @@ WriteMakefile(
    VERSION_FROM => "lib/Mozilla/CA.pm",
    ABSTRACT_FROM => "lib/Mozilla/CA.pm",
    AUTHOR => 'Gisle Aas <gisle@activestate.com>',
-   LICENSE => "MPL",
+   LICENSE => 'mozilla_1_1 gpl-2 lgpl_2_1',
    MIN_PERL_VERSION => 5.006,
    META_MERGE => {
        resources => {
