@@ -3,11 +3,16 @@ package Mozilla::CA;
 use strict;
 our $VERSION = '20110121';
 
-use File::Basename qw(dirname);
+use Cwd ();
 use File::Spec ();
+use File::Basename qw(dirname);
 
 sub SSL_ca_file {
-    return File::Spec->catfile(dirname(__FILE__), "CA", "cacert.pem");
+    my $file = File::Spec->catfile(dirname(__FILE__), "CA", "cacert.pem");
+    if (!File::Spec->file_name_is_absolute($file)) {
+	$file = File::Spec->catfile(Cwd::cwd(), $file);
+    }
+    return $file;
 }
 
 1;
@@ -40,7 +45,7 @@ The module provide a single function:
 
 =item SSL_ca_file()
 
-Returns the path to the Mozilla's CA cert bundle PEM file.
+Returns the absolute path to the Mozilla's CA cert bundle PEM file.
 
 =back
 
