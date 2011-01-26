@@ -3,4 +3,5 @@ lib/Mozilla/CA/cacert.pem
 Makefile.PL
 MANIFEST			This list of files
 README
+update-cacert-file
 t/locate-file.t
