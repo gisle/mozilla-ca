@@ -3,25 +3,13 @@
 use strict;
 use warnings;
 
-use File::Compare qw(compare);
-
-my $CACERT_PEM_URL = "http://curl.haxx.se/ca/cacert.pem";
 my $CACERT_PEM_FILE = "lib/Mozilla/CA/cacert.pem";
 my $GIT_AUTHOR = 'Mozilla <mozilla@mozilla.org>';
 
-use File::Fetch;
+run ("./mk-ca-bundle.pl", $CACERT_PEM_FILE);
 
-my $ff = File::Fetch->new(uri => $CACERT_PEM_URL);
-my $tmp = $ff->fetch();
-die $ff->error unless $tmp;
+system("git", "diff", "--exit-code", $CACERT_PEM_FILE) or exit;
 
-if (compare($tmp, $CACERT_PEM_FILE) == 0) {
-    unlink($tmp);
-    die "Current version is the latest version, stopped"
-}
-
-#run("diff", "-u", $CACERT_PEM_FILE, $tmp);
-rename($tmp, $CACERT_PEM_FILE);
 run("git", "add", $CACERT_PEM_FILE);
 
 my($y,$m,$d) = (gmtime)[5,4,3]; $y += 1900; $m++;
@@ -29,7 +17,7 @@ my $ver = sprintf "%04d%02d%02d", $y, $m, $d;
 run("perl", "-pi", "-e", "s/(^our .VERSION = )'\\d+(.\\d+)?'/\$1'$ver'/", "lib/Mozilla/CA.pm");
 run("git", "add", "lib/Mozilla/CA.pm");
 
-run("git", "commit", "-m", "Update from $CACERT_PEM_URL", "--author", $GIT_AUTHOR);
+run("git", "commit", "-m", "Update from Mozilla repository", "--author", $GIT_AUTHOR);
 exit;
 
 sub run {
