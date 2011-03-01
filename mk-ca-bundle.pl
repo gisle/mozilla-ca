@@ -89,6 +89,8 @@ if ($resp && $resp->code eq '304') {
     exit 0;
 }
 
+my $currentdate = scalar gmtime($resp ? $resp->last_modified : (stat($txt))[9]);
+
 if ($opt_b && -e $crt) {
   my $bk = 1;
   while (-e "$crt.~${bk}~") {
@@ -98,13 +100,12 @@ if ($opt_b && -e $crt) {
 }
 
 my $format = $opt_t ? "plain text and " : "";
-my $currentdate = scalar gmtime() . " UTC";
 open(CRT,">$crt") or die "Couldn't open $crt: $!";
 print CRT <<EOT;
 ##
 ## $crt -- Bundle of CA Root Certificates
 ##
-## Converted at: ${currentdate}
+## Certificate data from Mozilla as of: ${currentdate}
 ##
 ## This is a bundle of X.509 certificates of public Certificate Authorities
 ## (CA). These were automatically extracted from Mozilla's root certificates
