@@ -160,7 +160,8 @@ while (<TXT>) {
     }
     while (<TXT>) {
       last if (/^#$/);
-      $untrusted = 1 if (/^CKA_TRUST_SERVER_AUTH\s+CK_TRUST\s+CKT_NSS_NOT_TRUSTED$/);
+      $untrusted = 1 if (/^CKA_TRUST_SERVER_AUTH\s+CK_TRUST\s+CKT_NSS_NOT_TRUSTED$/
+                     or /^CKA_TRUST_SERVER_AUTH\s+CK_TRUST\s+CKT_NSS_TRUST_UNKNOWN$/);
     }
     if ($untrusted) {
       $skipnum ++;
@@ -187,7 +188,7 @@ while (<TXT>) {
 }
 close(TXT) or die "Couldn't close $txt: $!";
 unlink $txt if ($opt_u);
-print "Done ($certnum CA certs processed, $skipnum skipped).\n" if (!$opt_q);
+print "Done ($certnum CA certs processed, $skipnum untrusted skipped).\n" if (!$opt_q);
 
 exit;
 
