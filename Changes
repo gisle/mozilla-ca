@@ -1,3 +1,8 @@
+20111025
+  - Do not add CA's only trusted for email and/or code signing (RT#70967)
+    (if you need that, please let us know and we can see about putting it
+     in as an option)
+
 20110914
   - Remove "untrusted" certificates (RT#70967, Thomas Hoger)
 
