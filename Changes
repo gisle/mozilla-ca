@@ -4,7 +4,7 @@
      in as an option)
 
 20110914
-  - Remove "untrusted" certificates (RT#70967, Thomas Hoger)
+  - Remove "untrusted" certificates (RT#70967, Tomas Hoger)
 
 20110904
   - Remove and distrust DigiNotar
