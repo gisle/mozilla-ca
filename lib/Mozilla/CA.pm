@@ -1,7 +1,7 @@
 package Mozilla::CA;
 
 use strict;
-our $VERSION = '20111025';
+our $VERSION = '20120103';
 
 use Cwd ();
 use File::Spec ();
