@@ -1,3 +1,14 @@
+20120118
+  - CA updates:
+    Add:
+    - Security Communication RootCA2
+    - EC-ACC
+    - Hellenic Academic and Research Institutions RootCA 2011
+    Remove:
+    - Verisign Class 4 Public Primary Certification Authority - G2
+    - TC TrustCenter, Germany, Class 2 CA
+    - TC TrustCenter, Germany, Class 3 CA
+
 20111025
   - Do not add CA's only trusted for email and/or code signing (RT#70967)
     (if you need that, please let us know and we can see about putting it
