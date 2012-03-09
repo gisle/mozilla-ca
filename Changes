@@ -1,3 +1,9 @@
+20120308
+  - Download the certdata from mozilla over SSL (John Joseph Bachir)
+  - CA updates:
+    Removes:
+    - Hellenic Academic and Research Institutions RootCA 2011
+
 20120118
   - CA updates:
     Add:
