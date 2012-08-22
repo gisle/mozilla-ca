@@ -11,7 +11,7 @@ print "# $ca_file\n";
 ok($ca_file);
 ok(open(my $fh, "<", $ca_file));
 while (<$fh>) {
-    if (/\*\* BEGIN LICENSE BLOCK \*\*/) {
+    if (/--BEGIN CERTIFICATE--/) {
 	ok(1);
 	last;
     }

@@ -1,3 +1,6 @@
+20120823
+  - Fix test (RT#79129, reported by Sinan Unur)
+
 20120822
   - Add mk-ca-bundle.pl from git repository to distribution.
   - Add new/additional certificates from the following CAs: Verisign,
