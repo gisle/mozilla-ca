@@ -1,3 +1,9 @@
+20120822
+  - Add mk-ca-bundle.pl from git repository to distribution.
+  - Add new/additional certificates from the following CAs: Verisign,
+    UTN-USER, UTN USERFirst, Sonera, NetLock Qualified, SwissSign
+    Platinum, S-TRUST, ComSign, Actalis, Trustis, StartCom, Buypass.
+
 20120309
   - Download the certdata from mozilla over SSL (John Joseph Bachir)
   - CA updates:
