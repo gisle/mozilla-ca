@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl
 # ***************************************************************************
 # *                                  _   _ ____  _
 # *  Project                     ___| | | |  _ \| |
@@ -30,6 +30,7 @@
 # dependency is the OpenSSL commandline tool for optional text listing.
 # Hacked by Guenter Knauf.
 #
+use warnings;
 use Getopt::Std;
 use MIME::Base64;
 use LWP::UserAgent;
