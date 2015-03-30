@@ -6,7 +6,7 @@ use warnings;
 my $CACERT_PEM_FILE = "lib/Mozilla/CA/cacert.pem";
 my $GIT_AUTHOR = 'Mozilla <mozilla@mozilla.org>';
 
-run ("./mk-ca-bundle.pl", $CACERT_PEM_FILE);
+run ("./mk-ca-bundle.pl", "-p", "ALL:ALL", $CACERT_PEM_FILE);
 
 system("git", "diff", "--exit-code", $CACERT_PEM_FILE) or exit;
 
