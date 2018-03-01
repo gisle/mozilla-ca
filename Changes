@@ -1,5 +1,6 @@
 20180301
   - Update from Mozilla repository to 2018-01-17
+  - Update bundled mk-ca-bundle.pl from upstream.
 
 20160104
   - Update from Mozilla repository
