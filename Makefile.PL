@@ -6,14 +6,27 @@ WriteMakefile(
    VERSION_FROM => "lib/Mozilla/CA.pm",
    ABSTRACT_FROM => "lib/Mozilla/CA.pm",
    AUTHOR => 'Gisle Aas <gisle@activestate.com>',
-   LICENSE => 'mozilla_2_0',
+   LICENSE => 'open_source',
    MIN_PERL_VERSION => 5.006,
    META_MERGE => {
-       resources => {
-	   repository => 'http://github.com/gisle/mozilla-ca',
-       },
+      'meta-spec' => { version => 2 },
+      dynamic_config => 0,
+      resources => {
+         homepage => 'https://github.com/gisle/mozilla-ca',
+         license => [
+            'https://www.mozilla.org/media/MPL/2.0/index.txt'
+         ],
+         bugtracker => {
+            web => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Mozilla-CA'
+         },
+         repository => {
+            url => 'https://github.com/gisle/mozilla-ca.git',
+            web => 'https://github.com/gisle/mozilla-ca',
+            type => 'git',
+         },
+      },
    },
-   BUILD_REQUIRES => {
+   TEST_REQUIRES => {
        Test => 0,
    },
 );
@@ -26,7 +39,7 @@ BEGIN {
         META_MERGE => 6.45,
         META_ADD => 6.45,
         MIN_PERL_VERSION => 6.48,
-        BUILD_REQUIRES => 6.56,
+        TEST_REQUIRES => 6.63_03,
     );
     undef(*WriteMakefile);
     *WriteMakefile = sub {
