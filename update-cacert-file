@@ -18,6 +18,10 @@ run("perl", "-pi", "-e", "s/(^our .VERSION = )'\\d+(.\\d+)?'/\$1'$ver'/", "lib/M
 run("git", "add", "lib/Mozilla/CA.pm");
 
 run("git", "commit", "-m", "Update from Mozilla repository", "--author", $GIT_AUTHOR);
+
+run("perl", "Makefile.PL");
+print "Don't forget to update the Changes file";
+
 exit;
 
 sub run {
