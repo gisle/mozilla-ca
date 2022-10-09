@@ -1,0 +1,17 @@
+name: update cacert file
+
+on:
+  schedule:
+    - cron: "33 16 * * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: update cacert file
+        run: |
+          ./mk-ca-bundle.pl lib/Mozilla/CA/cacert.pem
+          git diff --exit-code || perl -pi -e "s/(^our .VERSION = )'\\d+(.\\d+)?'/\$1'$(date -u '+%Y%m%d')'/" lib/Mozilla/CA.pm
+      - uses: shogo82148/actions-commit-and-create-pr@v1
